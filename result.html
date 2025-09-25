@@ -1,0 +1,81 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;background-image: url("{{ url_for('static', filename='cricket-bat-ball-foreground-pitch.jpg') }}");
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+        }
+
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #00e6e6;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Match Outcome Prediction</h2>
+        <p><strong>{{ batting_team }}</strong> Win Probability: <strong>{{ win_probability }}%</strong></p>
+        <p><strong>{{ bowling_team }}</strong> Win Probability: <strong>{{ loss_probability }}%</strong></p>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Prediction Results</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("{{ url_for('static', filename='cricket-bat-ball-foreground-pitch.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+        }
+        .result-box {
+            background-color: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>Prediction Results</h2>
+        <p><strong>{{ batting_team }}</strong> Win Probability: {{ win_probability }}%</p>
+        <p><strong>{{ bowling_team }}</strong> Win Probability: {{ loss_probability }}%</p>
+        <!-- <p><strong>Score Prediction (Model 1):</strong> {{ predicted_score_pipe }} runs</p> -->
+        <p><strong>Score Prediction :</strong> {{ predicted_score_ridge }} runs</p>
+    </div>
+</body>
+</html>

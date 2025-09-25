@@ -1,0 +1,244 @@
+<!-- </html> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Match Win Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='cric_bg.jpg') }}");
+            background-size: cover;       
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        select, input {
+            padding: 12px;
+            margin: 10px;
+            width: 80%;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .logo {
+            width: 100px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img class="logo" src="templates\ipl_logo.png" alt="IPL Logo"> 
+        <img class="logo" src="{{ url_for('static', filename='ipl_logo.png') }}" alt="IPL Logo">
+        <h1>Cricket Match Win Predictor</h1>
+        <form action="/predict" method="POST">
+            <select name="batting_team" required>
+                <option value="">Select Batting Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Mumbai Indians</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Delhi Capitals</option>
+                <option>Sunrisers Hyderabad</option>
+                <option>Rajasthan Royals</option>
+                <option>Punjab Kings</option>
+                <option>Gujarat Titans</option>
+                <option>Lucknow Super Giants</option>
+            </select><br>
+
+            <select name="bowling_team" required>
+                <option value="">Select Bowling Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Mumbai Indians</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Delhi Capitals</option>
+                <option>Sunrisers Hyderabad</option>
+                <option>Rajasthan Royals</option>
+                <option>Punjab Kings</option>
+                <option>Gujarat Titans</option>
+                <option>Lucknow Super Giants</option>
+            </select><br>
+
+            <select name="selected_city" required>
+                <option value="">Select City</option>
+                <option>Mumbai</option>
+                <option>Bangalore</option>
+                <option>Delhi</option>
+                <option>Kolkata</option>
+                <option>Chennai</option>
+                <option>Hyderabad</option>
+                <option>Pune</option>
+                <option>Ahmedabad</option>
+            </select><br>
+
+            <input type="number" name="target" placeholder="Target Score" required><br>
+            <input type="number" name="score" placeholder="Current Score" required><br>
+            <input type="number" name="balls_left" placeholder="Balls Left" required><br>
+            <input type="number" name="wickets" placeholder="Wickets Fallen" required><br>
+
+            <button type="submit">Predict Outcome</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cricket Analytics Using Machine Learning</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("{{ url_for('static', filename='cric_bg.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            background-position: bottom;
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        select, input {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border-radius: 8px;
+            border: none;
+        }
+        button, .myButton {
+            padding: 10px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover, .myButton:hover {
+            background: #218838;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="{{ url_for('static', filename='ipl_logo.png') }}" alt="IPL Logo" width="100">
+        <h1>Cricket Analytics: Win & Score Prediction</h1>
+        <form action="/predict" method="POST">
+            <!-- Team Inputs -->
+            <select name="batting_team" required>
+                <option value="">Select Batting Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Delhi Capitals</option>
+                <option>Kings XI Punjab</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Mumbai Indians</option>
+                <option>Rajasthan Royals</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Sunrisers Hyderabad</option>
+            </select><br>
+
+            <select name="bowling_team" required>
+                <option value="">Select Bowling Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Delhi Capitals</option>
+                <option>Kings XI Punjab</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Mumbai Indians</option>
+                <option>Rajasthan Royals</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Sunrisers Hyderabad</option>
+            </select><br>
+            
+            <!-- Venue for Ridge Model -->
+            <select name="venue" required>
+                <option value="">Select Venue</option>
+                <option>ACA-VDCA Stadium, Visakhapatnam</option>
+                <option>Barabati Stadium, Cuttack</option>
+                <option>Dr DY Patil Sports Academy, Mumbai</option>
+                <option>Dubai International Cricket Stadium, Dubai</option>
+                <option>Eden Gardens, Kolkata</option>
+                <option>Feroz Shah Kotla, Delhi</option>
+                <option>Himachal Pradesh Cricket Association Stadium, Dharamshala</option>
+                <option>Holkar Cricket Stadium, Indore</option>
+                <option>JSCA International Stadium Complex, Ranchi</option>
+                <option>M Chinnaswamy Stadium, Bangalore</option>
+                <option>MA Chidambaram Stadium, Chepauk</option>
+                <option>Maharashtra Cricket Association Stadium, Pune</option>
+                <option>Punjab Cricket Association Stadium, Mohali</option>
+                <option>Raipur International Cricket Stadium, Raipur</option>
+                <option>Rajiv Gandhi International Stadium, Uppal</option>
+                <option>Sardar Patel Stadium, Motera</option>
+                <option>Sawai Mansingh Stadium, Jaipur</option>
+                <option>Sharjah Cricket Stadium, Sharjah</option>
+                <option>Sheikh Zayed Stadium, Abu-Dhabi</option>
+                <option>Wankhede Stadium, Mumbai</option>
+            </select><br>
+
+            <!-- Win Predictor Inputs -->
+            <input type="number" name="target" placeholder="Target Score" required><br>
+            <input type="number" name="score" placeholder="Current Score" required><br>
+            <input type="number" name="balls_left" placeholder="Balls Left" required><br>
+            <input type="number" name="wickets" placeholder="Wickets Fallen" required><br>
+
+            <!-- Ridge Model Inputs -->
+            <input type="text" name="overs" placeholder="Overs Completed (e.g. 7.2)" required><br>
+            <input type="text" name="runs_in_prev_5" placeholder="Runs in Last 5 Overs" required><br>
+            <input type="text" name="wickets_in_prev_5" placeholder="Wickets in Last 5 Overs" required><br>
+
+            <button type="submit" class="myButton">Predict Match Outcome & Score</button>
+        </form>
+    </div>
+</body>
+</html>
